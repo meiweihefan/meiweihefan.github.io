@@ -91,11 +91,11 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h4 id="一、漏洞原理与触发逻辑"><a href="#一、漏洞原理与触发逻辑" class="headerlink" title="一、漏洞原理与触发逻辑"></a>一、漏洞原理与触发逻辑</h4><h4 id="反序列化漏洞的本质是通过unserialize-函数解析用户可控的序列化数据，触发对象中的魔术方法（如-destruct-、-wakeup-等），从而执行恶意操作。例如："><a href="#反序列化漏洞的本质是通过unserialize-函数解析用户可控的序列化数据，触发对象中的魔术方法（如-destruct-、-wakeup-等），从而执行恶意操作。例如：" class="headerlink" title="反序列化漏洞的本质是通过unserialize()函数解析用户可控的序列化数据，触发对象中的魔术方法（如__destruct()、__wakeup()等），从而执行恶意操作。例如："></a>反序列化漏洞的本质是通过unserialize()函数解析用户可控的序列化数据，触发对象中的魔术方法（如__destruct()、__wakeup()等），从而执行恶意操作。例如：</h4><h4 id="​文件删除：若-destruct-中调用unlink-this-filename-，攻击者可通过控制filename属性删除系统文件。"><a href="#​文件删除：若-destruct-中调用unlink-this-filename-，攻击者可通过控制filename属性删除系统文件。" class="headerlink" title="​文件删除：若__destruct()中调用unlink($this-&gt;filename)，攻击者可通过控制filename属性删除系统文件。"></a>​文件删除：若__destruct()中调用unlink($this-&gt;filename)，攻击者可通过控制filename属性删除系统文件。</h4><h4 id="​代码执行：若-toString-或-invoke-中调用eval-或system-，可通过构造对象链触发命令执行。"><a href="#​代码执行：若-toString-或-invoke-中调用eval-或system-，可通过构造对象链触发命令执行。" class="headerlink" title="​代码执行：若__toString()或__invoke()中调用eval()或system()，可通过构造对象链触发命令执行。"></a>​代码执行：若__toString()或__invoke()中调用eval()或system()，可通过构造对象链触发命令执行。</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/15/Popppppp/" data-id="cm8a3njqw0001v0vkeysr3mjr" data-title="Popppppp" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/03/15/Popppppp/" data-id="cm8a3qd0t00001gvk24vk0evn" data-title="Popppppp" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -134,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/02/18/upload-labs%E9%9D%B6%E5%9C%BA%E9%80%9A%E5%85%B3/" data-id="cm8a3njqx0003v0vkgugl66dv" data-title="upload-labs靶场通关" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/02/18/upload-labs%E9%9D%B6%E5%9C%BA%E9%80%9A%E5%85%B3/" data-id="cm8a3qd1200051gvk36r87ldo" data-title="upload-labs靶场通关" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -175,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/02/18/sql-labs%E9%9D%B6%E5%9C%BA%E9%80%9A%E5%85%B3/" data-id="cm8a3njqx0002v0vkciwm0345" data-title="sql-labs靶场通关" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/02/18/sql-labs%E9%9D%B6%E5%9C%BA%E9%80%9A%E5%85%B3/" data-id="cm8a3qd0x00021gvk1rfh5ilc" data-title="sql-labs靶场通关" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -215,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/10/26/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%90%AD%E5%BB%BA/" data-id="cm8a3njr1000fv0vka7g14q27" data-title="虚拟机搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/10/26/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%90%AD%E5%BB%BA/" data-id="cm8a3qd1600091gvk8gbha27s" data-title="虚拟机搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -259,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/10/26/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" data-id="cm8a3njqz0005v0vk206n42k6" data-title="博客搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/10/26/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" data-id="cm8a3qd1500081gvk80bo021x" data-title="博客搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -312,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/10/25/hello-world/" data-id="cm8a3njqs0000v0vkhx7z8o8a" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/10/25/hello-world/" data-id="cm8a3qd0w00011gvkaho6bx5l" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
