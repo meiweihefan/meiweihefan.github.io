@@ -91,12 +91,14 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h4 id="一、漏洞原理与触发逻辑"><a href="#一、漏洞原理与触发逻辑" class="headerlink" title="一、漏洞原理与触发逻辑"></a>一、漏洞原理与触发逻辑</h4><h4 id="反序列化漏洞的本质是通过unserialize-函数解析用户可控的序列化数据，触发对象中的魔术方法（如-destruct-、-wakeup-等），从而执行恶意操作。例如："><a href="#反序列化漏洞的本质是通过unserialize-函数解析用户可控的序列化数据，触发对象中的魔术方法（如-destruct-、-wakeup-等），从而执行恶意操作。例如：" class="headerlink" title="反序列化漏洞的本质是通过unserialize()函数解析用户可控的序列化数据，触发对象中的魔术方法（如__destruct()、__wakeup()等），从而执行恶意操作。例如："></a>反序列化漏洞的本质是通过unserialize()函数解析用户可控的序列化数据，触发对象中的魔术方法（如__destruct()、__wakeup()等），从而执行恶意操作。例如：</h4><h4 id="​文件删除：若-destruct-中调用unlink-this-filename-，攻击者可通过控制filename属性删除系统文件。"><a href="#​文件删除：若-destruct-中调用unlink-this-filename-，攻击者可通过控制filename属性删除系统文件。" class="headerlink" title="​文件删除：若__destruct()中调用unlink($this-&gt;filename)，攻击者可通过控制filename属性删除系统文件。"></a>​文件删除：若__destruct()中调用unlink($this-&gt;filename)，攻击者可通过控制filename属性删除系统文件。</h4><h4 id="​代码执行：若-toString-或-invoke-中调用eval-或system-，可通过构造对象链触发命令执行。"><a href="#​代码执行：若-toString-或-invoke-中调用eval-或system-，可通过构造对象链触发命令执行。" class="headerlink" title="​代码执行：若__toString()或__invoke()中调用eval()或system()，可通过构造对象链触发命令执行。"></a>​代码执行：若__toString()或__invoke()中调用eval()或system()，可通过构造对象链触发命令执行。</h4><h4 id="常用魔术方法"><a href="#常用魔术方法" class="headerlink" title="常用魔术方法:"></a>常用魔术方法:</h4><h4 id="常用魔术方法-1"><a href="#常用魔术方法-1" class="headerlink" title="常用魔术方法"></a>常用魔术方法</h4><p>   **__destruct()**：对象销毁时触发，常用于启动攻击链。<br>​   **__wakeup()**：反序列化后立即调用，但可通过修改对象属性数量绕过（如CVE-2016-7124）。<br>​   **__toString()**：对象被字符串化时触发，常用于连接不同类的调用链。<br>​   **__call()**：调用不存在或不可访问的方法时触发，可用于动态执行代码</p>
+        <h4 id="一、漏洞原理与触发逻辑"><a href="#一、漏洞原理与触发逻辑" class="headerlink" title="一、漏洞原理与触发逻辑"></a>一、漏洞原理与触发逻辑</h4><h4 id="反序列化漏洞的本质是通过unserialize-函数解析用户可控的序列化数据，触发对象中的魔术方法（如-destruct-、-wakeup-等），从而执行恶意操作。例如："><a href="#反序列化漏洞的本质是通过unserialize-函数解析用户可控的序列化数据，触发对象中的魔术方法（如-destruct-、-wakeup-等），从而执行恶意操作。例如：" class="headerlink" title="反序列化漏洞的本质是通过unserialize()函数解析用户可控的序列化数据，触发对象中的魔术方法（如__destruct()、__wakeup()等），从而执行恶意操作。例如："></a>反序列化漏洞的本质是通过unserialize()函数解析用户可控的序列化数据，触发对象中的魔术方法（如__destruct()、__wakeup()等），从而执行恶意操作。例如：</h4><h4 id="​文件删除：若-destruct-中调用unlink-this-filename-，攻击者可通过控制filename属性删除系统文件。"><a href="#​文件删除：若-destruct-中调用unlink-this-filename-，攻击者可通过控制filename属性删除系统文件。" class="headerlink" title="​文件删除：若__destruct()中调用unlink($this-&gt;filename)，攻击者可通过控制filename属性删除系统文件。"></a>​文件删除：若__destruct()中调用unlink($this-&gt;filename)，攻击者可通过控制filename属性删除系统文件。</h4><h4 id="​代码执行：若-toString-或-invoke-中调用eval-或system-，可通过构造对象链触发命令执行。"><a href="#​代码执行：若-toString-或-invoke-中调用eval-或system-，可通过构造对象链触发命令执行。" class="headerlink" title="​代码执行：若__toString()或__invoke()中调用eval()或system()，可通过构造对象链触发命令执行。"></a>​代码执行：若__toString()或__invoke()中调用eval()或system()，可通过构造对象链触发命令执行。</h4><h4 id="常用魔术方法"><a href="#常用魔术方法" class="headerlink" title="常用魔术方法:"></a>常用魔术方法:</h4><h4 id="常用魔术方法-1"><a href="#常用魔术方法-1" class="headerlink" title="常用魔术方法"></a>常用魔术方法</h4><p>   __destruct()：对象销毁时触发，常用于启动攻击链。<br>​   __wakeup()：反序列化后立即调用，但可通过修改对象属性数量绕过（如CVE-2016-7124）。<br>​   __toString()：对象被字符串化时触发，常用于连接不同类的调用链。<br>​   __call()：调用不存在或不可访问的方法时触发，可用于动态执行代码</p>
+<h4 id="二、典型POP链构造步骤（以CTF赛题为例）"><a href="#二、典型POP链构造步骤（以CTF赛题为例）" class="headerlink" title="二、典型POP链构造步骤（以CTF赛题为例）"></a>二、典型POP链构造步骤（以CTF赛题为例）</h4><h4 id="​起点选择"><a href="#​起点选择" class="headerlink" title="​起点选择"></a>​起点选择</h4><p>通常从__destruct()或__wakeup()开始。例如：<br>php<br>class Start {<br>    public $mod1;<br>    public function __destruct() {<br>        $this-&gt;mod1-&gt;test1(); &#x2F;&#x2F; 触发下一层方法调用<br>    }<br>}</p>
+<h4 id="​方法串联"><a href="#​方法串联" class="headerlink" title="​方法串联"></a>​方法串联</h4><p>通过属性传递对象链，逐步触发魔术方法：<br>​Call::test1() 调用不存在的test2()，触发Funct::__call()。<br>​Funct::__call() 将$mod1作为函数调用，触发Func::__invoke()。<br>​Func::__invoke() 拼接字符串，触发String1::__toString()。<br>​String1::__toString() 调用GetFlag::get_flag()获取Flag</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/15/Popppppp/" data-id="cm8a3t29j0000wkvkgn0xang4" data-title="Popppppp" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/03/15/Popppppp/" data-id="cm8a3wgha000268vk31iyca0o" data-title="Popppppp" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -135,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/02/18/upload-labs%E9%9D%B6%E5%9C%BA%E9%80%9A%E5%85%B3/" data-id="cm8a3t29p0005wkvk8p43gsph" data-title="upload-labs靶场通关" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/02/18/upload-labs%E9%9D%B6%E5%9C%BA%E9%80%9A%E5%85%B3/" data-id="cm8a3wghb000468vkdron5ot1" data-title="upload-labs靶场通关" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -176,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/02/18/sql-labs%E9%9D%B6%E5%9C%BA%E9%80%9A%E5%85%B3/" data-id="cm8a3t29n0002wkvkhgu04x5x" data-title="sql-labs靶场通关" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/02/18/sql-labs%E9%9D%B6%E5%9C%BA%E9%80%9A%E5%85%B3/" data-id="cm8a3wgh9000168vk0qxi9rp4" data-title="sql-labs靶场通关" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -216,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/10/26/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%90%AD%E5%BB%BA/" data-id="cm8a3t29q0007wkvkhndy3wlt" data-title="虚拟机搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/10/26/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%90%AD%E5%BB%BA/" data-id="cm8a3wghc000568vkbm2rghzl" data-title="虚拟机搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -260,7 +262,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/10/26/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" data-id="cm8a3t29n0003wkvk34ks9hud" data-title="博客搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/10/26/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" data-id="cm8a3wghc000668vka0zt0l4p" data-title="博客搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -313,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/10/25/hello-world/" data-id="cm8a3t29m0001wkvkaij958gr" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/10/25/hello-world/" data-id="cm8a3wgh6000068vk6ccf095s" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
